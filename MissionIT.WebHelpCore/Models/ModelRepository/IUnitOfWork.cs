@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MissionIT.WebHelpCore.Models.ModelRepository
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         ISectionRepository Sections { get; }
         IArticleRepository Articles { get; }
