@@ -6,7 +6,7 @@ using MissionIT.WebHelpCore.Models.HelpClasses;
 
 namespace MissionIT.WebHelpCore.Models.ModelRepository
 {
-    interface IArticleRepository
+    public interface IArticleRepository
     {
         IEnumerable<Article> GetArticleWithSection();
     }

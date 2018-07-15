@@ -6,7 +6,7 @@ using MissionIT.WebHelpCore.Models.HelpClasses;
 
 namespace MissionIT.WebHelpCore.Models.ModelRepository
 {
-    interface ISectionRepository
+    public interface ISectionRepository
     {
         Section GetSectionWithArticles(int id);
     }
