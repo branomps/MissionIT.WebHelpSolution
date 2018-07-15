@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MissionIT.WebHelpCore.Data;
 using MissionIT.WebHelpCore.Models;
 using MissionIT.WebHelpCore.Services;
+using MissionIT.WebHelpCore.Models.ModelRepository;
 
 namespace MissionIT.WebHelpCore
 {
@@ -28,6 +29,7 @@ namespace MissionIT.WebHelpCore
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContextPool<HelpDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("HelpDatabase")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -35,6 +37,8 @@ namespace MissionIT.WebHelpCore
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            // Add service for UnitoOfWork
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddMvc();
         }
